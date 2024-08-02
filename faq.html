@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Jenil B</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+        /* Custom FAQ Styles */
+        .faq-header {
+            margin-top: 100px; /* Ensure this matches the height of the fixed navbar */
+            background-color: #f8f9fa;
+            padding: 50px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .faq-header h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 3rem;
+            color: #343a40;
+        }
+
+        .faq-section {
+            padding: 40px 0;
+        }
+
+        .faq-item {
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-item .card-header {
+            background-color: #343a40;
+            color: #fff;
+            cursor: pointer;
+            padding: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-item .card-body {
+            background-color: #f8f9fa;
+            color: #343a40;
+            padding: 20px;
+            font-size: 1rem;
+        }
+
+        .faq-item .card-header:hover,
+        .faq-item .card-header:focus {
+            background-color: #495057;
+        }
+
+        .footer-one img {
+            max-width: 60%;
+        }
+
+        .footer-one p {
+            font-size: 0.9rem;
+        }
+
+        .footer-one h5 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-one ul li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <div class="nav-bar-div">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 fixed-top">
+            <div class="container">
+                <img src="../images/logo4.png" alt="">
+                <h2 style="margin-left: 15px; font-family: Pacifico;">Jenil B</h2>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span><i id="bar" class="fas fa-bars"></i></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../index.html">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="shop.html">Shop</a></li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="blog.html">Blog</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="aboutus.html">About</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link active" href="faq.html">FAQ</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact Us</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="cartGroup" href="search.html"><i class="fal fa-search"></i></a>
+
+                        <a class="cartGroup" href="cart.html"><i class="fal fa-shopping-bag"><span>(0)</span></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- FAQ Header -->
+    <div class="faq-header">
+        <h1>Frequently Asked Questions</h1>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="container faq-section">
+        <div class="accordion" id="faqAccordion">
+            <div class="faq-item card">
+                <div class="card-header" id="faqHeading1" data-toggle="collapse" data-target="#faq1" aria-expanded="true" aria-controls="faq1">
+                    What is Our return policy?
+                </div>
+                <div id="faq1" class="collapse show" aria-labelledby="faqHeading1" data-parent="#faqAccordion">
+                    <div class="card-body">
+                        We offer a 30-day return policy on all items. Please ensure that the items are returned in their original condition with all tags attached.
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item card">
+                <div class="card-header" id="faqHeading2" data-toggle="collapse" data-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                    How can I track my order?
+                </div>
+                <div id="faq2" class="collapse" aria-labelledby="faqHeading2" data-parent="#faqAccordion">
+                    <div class="card-body">
+                        Once your order is shipped, you will receive a tracking number via email. You can use this number on our website to track the status of your shipment.
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item card">
+                <div class="card-header" id="faqHeading3" data-toggle="collapse" data-target="#faq3" aria-expanded="false" aria-controls="faq3">
+                    What payment methods do you accept?
+                </div>
+                <div id="faq3" class="collapse" aria-labelledby="faqHeading3" data-parent="#faqAccordion">
+                    <div class="card-body">
+                        We accept various payment methods including Visa, MasterCard, PayPal, and other major credit cards.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item card">
+                <div class="card-header" id="faqHeading4" data-toggle="collapse" data-target="#faq4" aria-expanded="false" aria-controls="faq4">
+                    How to contact us for some issues or reasons ?
+                </div>
+                <div id="faq4" class="collapse" aria-labelledby="faqHeading4" data-parent="#faqAccordion">
+                    <div class="card-body">
+                        Visit our website! You can contact us by submitting a form, sending us an email, or giving us a call.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-5">
+        <div class="row container mx-auto pt-5">
+            <div class="footer-one col-lg-3 col-md-6 col-12">
+                <img style="padding-left: 32%;" src="images/realred.png" alt="">
+                <p class="pt-3">At Jenil B, you not only get items at an affordable price, but you receive a sense of accomplishment and pride. People might go for all those fancy brands, but once you go Jenil B, you be Jenil.</p>
+            </div>
+            <div class="footer-one col-lg-3 col-md-6 col-12 mb-3">
+                <h5 class="pb-2">Featured</h5>
+                <ul class="text-uppercase list-unstyled">
+                    <li><a href="../shop.html">Men</a></li>
+                    <li><a href="../shop.html">Women</a></li>
+                    <li><a href="../shop.html">Children</a></li>
+                    <li><a href="../shop.html">Classy</a></li>
+                    <li><a href="../shop.html">Trendy</a></li>
+                    <li><a href="../shop.html">Cool</a></li>
+                    <li><a href="../shop.html">Sexy</a></li>
+                    <li><a href="../shop.html">Apache</a></li>
+                </ul>
+            </div>
+            <div class="footer-one col-lg-3 col-md-6 col-12 mb-3">
+                <h5 class="pb-2">Contact Us</h5>
+                <div>
+                    <h6 class="text-uppercase">Address</h6>
+                    <p>Partington Avenue, Windsor, Canada</p>
+                </div>
+                <div>
+                    <h6 class="text-uppercase">Phone</h6>
+                    <p>123-456-7890</p>
+                </div>
+                <div>
+                    <h6 class="text-uppercase">Email</h6>
+                    <p>bhindi@uwindsor.ca</p>
+                </div>
+            </div>
+            <div class="footer-one col-lg-3 col-md-6 col-12">
+                <h5 class="pb-2">Instagram</h5>
+                <div class="row">
+                    <img class="img-fluid w-25 h-100 m-2" src="../images/insta/1.jpg" alt="">
+                    <img class="img-fluid w-25 h-100 m-2" src="../images/insta/2.jpg" alt="">
+                    <img class="img-fluid w-25 h-100 m-2" src="../images/insta/3.jpg" alt="">
+                    <img class="img-fluid w-25 h-100 m-2" src="../images/insta/4.jpg" alt="">
+                    <img class="img-fluid w-25 h-100 m-2" src="../images/insta/5.jpg" alt="">
+                    <img class="img-fluid w-25 h-100 m-2" src="../images/insta/6.jpg" alt="">
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright mt-5">
+            <div class="row container mx-auto">
+                <div class="col-lg-3 col-md-6 col-12 mb-4">
+                    <img src="images/pay.jpeg" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 col-12 text-nowrap mb-2">
+                    <p>Jenil Bhindi © 2021. All Rights Reserved </p>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <a target="_blank" href="https://www.facebook.com/bhindijenil/"><i class="fab fa-facebook-f"></i></a>
+                    <a target="_blank" href="https://twitter.com/JenilSoni1"><i class="fab fa-twitter"></i></a>
+                    <a target="_blank" href="https://www.linkedin.com/in/jenilbhindi/"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" 
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      crossorigin="anonymous"
+    ></script>
+</body>
+
+</html>
