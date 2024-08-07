@@ -1,8 +1,10 @@
 document.addEventListener("DOMContentLoaded", function() {
+    // Load the header content from the external HTML file
     var xhr = new XMLHttpRequest();
     xhr.open('GET', '../pages/header.html', true);
     xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4 && xhr.status == 200) {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // Insert the header content into the placeholder div
             document.getElementById('header-placeholder').innerHTML = xhr.responseText;
 
             // After loading the header, check the authentication status and update UI
@@ -14,6 +16,19 @@ document.addEventListener("DOMContentLoaded", function() {
     xhr.send();
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+    var xhrFooter = new XMLHttpRequest();
+    xhrFooter.open('GET', '../pages/footer.html', true);
+    xhrFooter.onreadystatechange = function () {
+        if (xhrFooter.readyState == 4 && xhrFooter.status == 200) {
+            document.getElementById('footer-placeholder').innerHTML = xhrFooter.responseText;
+        }
+    };
+    xhrFooter.send();
+});
+
+
+// Check the authentication status and update the UI accordingly
 function checkAuthStatus() {
     var userData = localStorage.getItem('loggedInUser');
     var isAuthenticated = false;
@@ -43,6 +58,7 @@ function checkAuthStatus() {
         if (loginFalse) loginFalse.style.display = 'block';
     }
 
+    // Sign out event listener
     if (signOut) {
         signOut.addEventListener('click', function() {
             localStorage.removeItem('loggedInUser');
@@ -51,14 +67,11 @@ function checkAuthStatus() {
     }
 }
 
+// Set the active navigation link based on the current URL
 function setActiveLink() {
-    // Get the current page URL
     var currentPage = window.location.pathname.split("/").pop();
-
-    // Select all navigation links
     var navLinks = document.querySelectorAll('.navbar-nav .nav-link');
 
-    // Loop through all nav links and set the active class
     navLinks.forEach(function(link) {
         var href = link.getAttribute('href').split("/").pop();
         if (href === currentPage) {
@@ -69,16 +82,18 @@ function setActiveLink() {
     });
 }
 
+// Load and display the number of items in the cart
 function onLoadCartNumbers() {
     updateCartDisplay();
 }
 
+// Update the cart display with the number of items
 function updateCartDisplay() {
     let productNumbers = localStorage.getItem('cartNumbers');
     if (productNumbers) {
-        let cartNumberElement = document.querySelector('.cartGroup span');
+        let cartNumberElement = document.querySelector('.cart-count');
         if (cartNumberElement) {
-            cartNumberElement.textContent = productNumbers;
+            cartNumberElement.textContent = `(${productNumbers})`;
         } else {
             console.error('Cart number element not found.');
         }

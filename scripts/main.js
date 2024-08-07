@@ -2,104 +2,7 @@ let carts = document.querySelectorAll('.buy-btn');
 let setFromDelete = false;
 let setFromlowQ = false;
 
-let products = [
-    {
-        name: 'Green Shirt',
-        tag: 'grs',
-        price: 20,
-        inCart: 0
-    },
-    {
-        name: 'Red Hoodie',
-        tag: 'rh',
-        price: 38,
-        inCart: 0
-    },
-    {
-        name: 'Blue Jumper',
-        tag: 'bj',
-        price: 45,
-        inCart: 0
-    },
-    {
-        name: 'Aqua Tshirt',
-        tag: 'at',
-        price: 10,
-        inCart: 0
-    },
-    {
-        name: 'Orange Top',
-        tag: 'd5',
-        price: 70,
-        inCart: 0
-    },
-    {
-        name: 'Blue Top',
-        tag: 'd6',
-        price: 80,
-        inCart: 0
-    },
-    {
-        name: 'Pink Top',
-        tag: 'd7',
-        price: 30,
-        inCart: 0
-    },
-    {
-        name: 'Pink Top',
-        tag: 'd7',
-        price: 30,
-        inCart: 0
-    },
-    {
-        name: 'Blue Trans',
-        tag: 'btr',
-        price: 30,
-        inCart: 0
-    }, 
-    {
-        name: 'Threaded Top',
-        tag: 'thr',
-        price: 30,
-        inCart: 0
-    },
-    {
-        name: 'Red Trans',
-        tag: 'rtr',
-        price: 30,
-        inCart: 0
-    },
-    {
-        name: 'Green Trans',
-        tag: 'gtr',
-        price: 30,
-        inCart: 0
-    },
-    {
-        name: 'Green Tank',
-        tag: 'grl',
-        price: 30,
-        inCart: 0
-    },
-    {
-        name: 'Jean Full',
-        tag: 'jf',
-        price: 30,
-        inCart: 0
-    },
-    {
-        name: 'Jean Bottom',
-        tag: 'jb',
-        price: 30,
-        inCart: 0
-    },
-    {
-        name: 'Green Flora',
-        tag: 'fla',
-        price: 30,
-        inCart: 0
-    }
-];
+let products = []
 
 for(let i=0; i < carts.length; i++){
     carts[i].addEventListener('click', ()=>{
@@ -336,13 +239,12 @@ function setCheckout(){
 }
 
 function successfulCheckout(){
+    generateInvoice(users.name, document.getElementById('checkout_Email'))
     localStorage.clear();
     window.localStorage.clear();
     alert('Thank you for buying with RuAin Furniture!');
     var users = JSON.parse(localStorage.getItem('users')) || [];
-    debugger;
-    generateInvoice(users.name, document.getElementById('checkout_Email'))
-    // window.location.href='index.html';
+    window.location.href='index.html';
 }
 
 
@@ -424,11 +326,25 @@ function displayCart(){
     }   
 }
 
-function generateInvoice(name, email) {
-    debugger;
+function generateInvoice() {
     // Retrieve cart items and total cost from localStorage
-    let cartItems = JSON.parse(localStorage.getItem('productsInCart')) || [];
-    let totalCost = localStorage.getItem('totalCost') || 0;
+    let cartItems = JSON.parse(localStorage.getItem('productsInCart')) || {};
+    let totalCost = parseFloat(localStorage.getItem('totalCost')) || 0;
+
+    // Retrieve user details from local storage
+    let userData = localStorage.getItem('loggedInUser');
+    let userName = 'Guest';
+    let userEmail = 'guest@example.com';
+
+    if (userData) {
+        try {
+            let user = JSON.parse(userData);
+            userName = user.fullName || 'Guest';
+            userEmail = user.username || 'guest@example.com'; // Using 'username' as email
+        } catch (error) {
+            console.error('Error parsing user data from local storage:', error);
+        }
+    }
 
     // Create a new jsPDF instance
     const { jsPDF } = window.jspdf;
@@ -438,8 +354,8 @@ function generateInvoice(name, email) {
     doc.setFontSize(20);
     doc.text('Invoice', 105, 20, { align: 'center' });
     doc.setFontSize(12);
-    doc.text(`Name: ${name}`, 10, 40);
-    doc.text(`Email: ${email}`, 10, 50);
+    doc.text(`Name: ${userName}`, 10, 40);
+    doc.text(`Email: ${userEmail}`, 10, 50);
     doc.text(`Date: ${new Date().toLocaleDateString()}`, 10, 60);
 
     // Add a line break
@@ -458,10 +374,10 @@ function generateInvoice(name, email) {
 
     // Table rows for each product
     let yPosition = 100;
-    cartItems.forEach(item => {
+    Object.values(cartItems).forEach(item => {
         doc.text(item.name, 10, yPosition);
         doc.text(String(item.inCart), 80, yPosition);
-        doc.text(`$${item.price}`, 120, yPosition);
+        doc.text(`$${item.price.toFixed(2)}`, 120, yPosition);
         doc.text(`$${(item.price * item.inCart).toFixed(2)}`, 160, yPosition);
         yPosition += 10;
     });
@@ -473,11 +389,68 @@ function generateInvoice(name, email) {
     // Total amount
     doc.setFontSize(14);
     doc.text('Total:', 120, yPosition);
-    doc.text(`$${parseFloat(totalCost).toFixed(2)}`, 160, yPosition);
+    doc.text(`$${totalCost.toFixed(2)}`, 160, yPosition);
 
     // Save the PDF
     doc.save('invoice.pdf');
 }
+
+// Call generateInvoice function when needed, for example, on checkout button click
+document.querySelector('.btn-blue').addEventListener('click', generateInvoice);
+
+
+function validatePaymentInfo() {
+    // Get the payment information from the form
+    let cardName = document.getElementById('cname').value.trim();
+    let cardNumber = document.getElementById('cnum').value.trim();
+    let expDate = document.getElementById('exp').value.trim();
+    let cvv = document.getElementById('cvv').value.trim();
+
+    // Regular expressions for validation
+    const cardNumberPattern = /^\d{16}$/;
+    const expDatePattern = /^(0[1-9]|1[0-2])\/\d{4}$/;
+    const cvvPattern = /^\d{3,4}$/;
+
+    // Validate each field
+    if (!cardName) {
+        alert('Please enter the name on the card.');
+        return false;
+    }
+
+    if (!cardNumber || !cardNumberPattern.test(cardNumber)) {
+        alert('Please enter a valid 16-digit card number.');
+        return false;
+    }
+
+    if (!expDate || !expDatePattern.test(expDate)) {
+        alert('Please enter a valid expiration date in MM/YYYY format.');
+        return false;
+    }
+
+    if (!cvv || !cvvPattern.test(cvv)) {
+        alert('Please enter a valid CVV (3 or 4 digits).');
+        return false;
+    }
+
+    return true; // Return true if all validations pass
+}
+
+// Call validatePaymentInfo before checkout
+function successfulCheckout() {
+    if (validatePaymentInfo()) {
+        // Proceed with checkout if payment info is valid
+        localStorage.clear();
+        window.localStorage.clear();
+        alert('Thank you for buying with RuAin Furniture!');
+        var users = JSON.parse(localStorage.getItem('users')) || [];
+        generateInvoice(users.name, document.getElementById('checkout_Email').value);
+        // window.location.href='index.html';
+    }
+}
+
+
+
+
 
 onLoadCartNumbers();
 displayCart();
