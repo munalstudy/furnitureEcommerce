@@ -56,9 +56,9 @@ $(document).ready(function () {
     
             $('#message').html('<div class="alert alert-success">Login successful! Welcome, ' + user.fullName + '.</div>');
             
-            // Redirect to index.html after a short delay
+            // Redirect to main.html after a short delay
             setTimeout(function () {
-                window.location.href = "../index.html";
+                window.location.href = "../pages/main.html";
             }, 1000); // 1 second delay for user to see the success message
         } else {
             $('#message').html('<div class="alert alert-danger">Invalid username or password. Please try again.</div>');

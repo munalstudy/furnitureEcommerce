@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
     xhrFooter.onreadystatechange = function () {
         if (xhrFooter.readyState === 4 && xhrFooter.status === 200) {
             document.getElementById('footer-placeholder').innerHTML = xhrFooter.responseText;
-        } else if (xhr.status === 404) {
+        } else if (xhrFooter.status === 404) {
             var xhrNew = new XMLHttpRequest();
             xhrNew.open('GET', '/furnitureEcommerce/pages/footer.html', true);
             xhrNew.onreadystatechange = function () {
@@ -83,7 +83,7 @@ function checkAuthStatus() {
     if (signOut) {
         signOut.addEventListener('click', function() {
             localStorage.removeItem('loggedInUser');
-            window.location.href = "../index.html";
+            window.location.href = "../pages/main.html";
         });
     }
 }

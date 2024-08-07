@@ -244,7 +244,7 @@ function successfulCheckout(){
     window.localStorage.clear();
     alert('Thank you for buying with RuAin Furniture!');
     var users = JSON.parse(localStorage.getItem('users')) || [];
-    window.location.href='index.html';
+    window.location.href='../pages/main.html';
 }
 
 
