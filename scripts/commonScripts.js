@@ -116,7 +116,19 @@ function updateCartDisplay() {
         if (cartNumberElement) {
             cartNumberElement.textContent = `(${productNumbers})`;
         } else {
-            console.error('Cart number element not found.');
+            onLoadCartNumbers();
+        }
+    }
+}
+
+function onLoadCartNumbers() {
+    let productNumbers = localStorage.getItem('cartNumbers');
+
+    if (productNumbers) {
+        let spanToCheck = document.querySelector('.nav-item span');
+        if (spanToCheck) {
+            spanToCheck.textContent = productNumbers;
+
         }
     }
 }
