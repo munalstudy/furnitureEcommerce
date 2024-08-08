@@ -154,11 +154,9 @@
 <script src="../scripts/indexM.js" type='text/javascript'></script>
 
 <script>
-    $(document).ready(function () {
-        $('.buy-btn').click(function () {
-            $('.toast').toast('show');
-        });
-    });
+    window.onload = function () {
+        jQuery('body .buy-btn').click(function(){jQuery('.toast').toast('show');});
+    }
 </script>
 </body>
 </html>

@@ -29,7 +29,11 @@ function onLoadCartNumbers() {
     let productNumbers = localStorage.getItem('cartNumbers');
 
     if (productNumbers) {
-        document.querySelector('.nav-item span').textContent = productNumbers;
+        let spanToCheck = document.querySelector('.nav-item span');
+        if (spanToCheck) {
+            spanToCheck.textContent = productNumbers;
+
+        }
     }
 }
 

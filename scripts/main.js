@@ -451,7 +451,6 @@ function successfulCheckout() {
     }
 }
 
-
 onLoadCartNumbers();
 displayCart();
 checkCart();
