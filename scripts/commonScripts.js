@@ -11,6 +11,18 @@ document.addEventListener("DOMContentLoaded", function() {
             checkAuthStatus();
             setActiveLink();
             onLoadCartNumbers();
+        } else if (xhr.status === 404) {
+            var xhrNew = new XMLHttpRequest();
+            xhrNew.open('GET', '/furnitureEcommerce/pages/header.html', true);
+            xhrNew.onreadystatechange = function () {
+                if (xhrNew.readyState === 4 && xhrNew.status === 200) {
+                    document.getElementById('header-placeholder').innerHTML = xhrNew.responseText;
+                    checkAuthStatus();
+                    setActiveLink();
+                    onLoadCartNumbers();
+                }
+            }
+            xhrNew.send();
         }
     };
     xhr.send();
@@ -20,8 +32,17 @@ document.addEventListener("DOMContentLoaded", function() {
     var xhrFooter = new XMLHttpRequest();
     xhrFooter.open('GET', '../pages/footer.html', true);
     xhrFooter.onreadystatechange = function () {
-        if (xhrFooter.readyState == 4 && xhrFooter.status == 200) {
+        if (xhrFooter.readyState === 4 && xhrFooter.status === 200) {
             document.getElementById('footer-placeholder').innerHTML = xhrFooter.responseText;
+        } else if (xhrFooter.status === 404) {
+            var xhrNew = new XMLHttpRequest();
+            xhrNew.open('GET', '/furnitureEcommerce/pages/footer.html', true);
+            xhrNew.onreadystatechange = function () {
+                if (xhrNew.readyState === 4 && xhrNew.status === 200) {
+                    document.getElementById('footer-placeholder').innerHTML = xhrFooter.responseText;
+                }
+            }
+            xhrNew.send();
         }
     };
     xhrFooter.send();
@@ -62,7 +83,7 @@ function checkAuthStatus() {
     if (signOut) {
         signOut.addEventListener('click', function() {
             localStorage.removeItem('loggedInUser');
-            window.location.href = "../index.html";
+            window.location.href = "../pages/main.html";
         });
     }
 }
@@ -95,7 +116,24 @@ function updateCartDisplay() {
         if (cartNumberElement) {
             cartNumberElement.textContent = `(${productNumbers})`;
         } else {
-            console.error('Cart number element not found.');
+            onLoadCartNumbers();
         }
     }
 }
+
+function onLoadCartNumbers() {
+    let productNumbers = localStorage.getItem('cartNumbers');
+
+    if (productNumbers) {
+        let spanToCheck = document.querySelector('.nav-item span');
+        if (spanToCheck) {
+            spanToCheck.textContent = productNumbers;
+
+        }
+    }
+}
+
+window.onload = function () {
+    jQuery('body .buy-btn').click(function(){jQuery('.toast').toast('show');});
+}
+

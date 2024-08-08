@@ -92,7 +92,7 @@ $(document).ready(function() {
   function updateCartDisplay() {
       let productNumbers = localStorage.getItem('cartNumbers');
       if (productNumbers) {
-          document.querySelector('.cartGroup span').textContent = productNumbers;
+          document.querySelector('.nav-link span').textContent = productNumbers;
       }
   }
 
