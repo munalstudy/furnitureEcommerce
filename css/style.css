@@ -357,3 +357,8 @@ footer .copyright a:hover {
 .colorOrgange{
   color: #FF7F50;
 }
+
+#loginFalse{
+  display: flex !important;
+  align-items: center;
+}

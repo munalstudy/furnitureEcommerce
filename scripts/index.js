@@ -96,7 +96,7 @@ function displayProducts({ containerSelector, filterCriteria, sortFunction, shuf
         let productCard = `
             <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
                 <div class="product text-center">
-                    <a href="pages/sproduct.html?id=${product.id}"><img class="img-fluid mb-3" src="../images/product/${product.image}.jpg" alt="${product.name}" style="height: 200px; object-fit: cover;"> </a>
+                    <a href="sproduct.html?id=${product.id}"><img class="img-fluid mb-3" src="../images/product/${product.image}.jpg" alt="${product.name}" style="height: 200px; object-fit: cover;"> </a>
                     <div class="star mb-2">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
