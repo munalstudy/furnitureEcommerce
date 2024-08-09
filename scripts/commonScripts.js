@@ -71,12 +71,14 @@ function checkAuthStatus() {
     var signOut = document.getElementById('signOut');
 
     if (isAuthenticated) {
-        if (loginTrue) loginTrue.style.display = 'block';
-        if (loginFalse) loginFalse.style.display = 'none';
-        if (greeting) greeting.innerText = `Hello, ${userFullName}`;
+        debugger;
+        if (isAuthenticated) loginTrue.style.display = 'block';
+        if (isAuthenticated) loginFalse.style.display = 'none';
+        if (isAuthenticated) greeting.innerText = `Hello, ${userFullName}`;
     } else {
-        if (loginTrue) loginTrue.style.display = 'none';
-        if (loginFalse) loginFalse.style.display = 'block';
+        debugger;
+        if (isAuthenticated) loginTrue.style.display = 'none';
+        if (isAuthenticated) loginFalse.style.display = 'block';
     }
 
     // Sign out event listener
