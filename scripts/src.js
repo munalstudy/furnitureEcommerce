@@ -1,200 +1,16 @@
 const searchBar = document.getElementById('searchBar');
 let carts = document.querySelectorAll('.buy-btn');
 
-let products = [
-    {
-        name: 'Brown Jacket',
-        tag: 'e',
-        price: 60,
-        inCart: 0
-    },
-    {
-        name: 'Blue Suit',
-        tag: 'q',
-        price: 120,
-        inCart: 0
-    },
-    {
-        name: 'Grey Suit',
-        tag: 'w',
-        price: 120,
-        inCart: 0
-    },
-    {
-        name: 'White Tshirt',
-        tag: 'r',
-        price: 15,
-        inCart: 0
-    },
-    {
-        name: 'Yellow Full',
-        tag: 'd1',
-        price: 60,
-        inCart: 0
-    },
-    {
-        name: 'Black Full',
-        tag: 'd2',
-        price: 60,
-        inCart: 0
-    },
-    {
-        name: 'While Full',
-        tag: 'd3',
-        price: 60,
-        inCart: 0
-    },
-    {
-        name: 'Grey Full',
-        tag: 'd4',
-        price: 60,
-        inCart: 0
-    },
-    {
-        name: 'Silver Black',
-        tag: 'ww1',
-        price: 80,
-        inCart: 0
-    },
-    {
-        name: 'Digital W',
-        tag: 'ww2',
-        price: 40,
-        inCart: 0
-    },
-    {
-        name: 'Silver Blue',
-        tag: 'ww3',
-        price: 80,
-        inCart: 0
-    },
-    {
-        name: 'Black Gold',
-        tag: 'ww4',
-        price: 30,
-        inCart: 0
-    },
-    {
-        name: 'Brown Shoes',
-        tag: 'as5',
-        price: 50,
-        inCart: 0
-    },
-    {
-        name: 'Sport Shoes',
-        tag: 'as6',
-        price: 70,
-        inCart: 0
-    },
-    {
-        name: 'Jenil Shoes',
-        tag: 'as1',
-        price: 15,
-        inCart: 0
-    },
-    {
-        name: 'Road Shoes',
-        tag: 'as7',
-        price: 20,
-        inCart: 0
-    },
-    {
-        name: 'Green Shirt',
-        tag: 'grs',
-        price: 20,
-        inCart: 0
-    },
-    {
-        name: 'Red Hoodie',
-        tag: 'rh',
-        price: 40,
-        inCart: 0
-    },
-    {
-        name: 'Blue Jumper',
-        tag: 'bj',
-        price: 35,
-        inCart: 0
-    },
-    {
-        name: 'Aqua Tshirt',
-        tag: 'at',
-        price: 25,
-        inCart: 0
-    },
-    {
-        name: 'Orange Full',
-        tag: 'd5',
-        price: 70,
-        inCart: 0
-    },
-    {
-        name: 'Blue Full',
-        tag: 'd6',
-        price: 80,
-        inCart: 0
-    },
-    {
-        name: 'Pink Full',
-        tag: 'd7',
-        price: 40,
-        inCart: 0
-    },
-    {
-        name: 'Pink Full',
-        tag: 'd7',
-        price: 40,
-        inCart: 0
-    },
-    {
-        name: 'Blue Top',
-        tag: 'btr',
-        price: 35,
-        inCart: 0
-    }, 
-    {
-        name: 'Thread Top',
-        tag: 'thr',
-        price: 40,
-        inCart: 0
-    },
-    {
-        name: 'Red Top',
-        tag: 'rtr',
-        price: 30,
-        inCart: 0
-    },
-    {
-        name: 'Flora Top',
-        tag: 'gtr',
-        price: 70,
-        inCart: 0
-    },
-    {
-        name: 'Green Tank',
-        tag: 'grl',
-        price: 30,
-        inCart: 0
-    },
-    {
-        name: 'Jean Full',
-        tag: 'jf',
-        price: 90,
-        inCart: 0
-    },
-    {
-        name: 'Jean Pant',
-        tag: 'jb',
-        price: 35,
-        inCart: 0
-    },
-    {
-        name: 'Flora Cozy',
-        tag: 'fla',
-        price: 40,
-        inCart: 0
-    }
-];
+let products = []
+
+$.getJSON('../data/products.json')
+.done(function(data) {
+    products = data;
+    // applyFilters(); // Initial display
+})
+.fail(function() {
+    console.error("Error loading products data.");
+});
 
 filteredList = [];
 
@@ -212,26 +28,47 @@ searchBar.addEventListener('keyup', (e) => {
     displayCart(filteredCharacters);
 });
 
+// function displayCart(product){
+//     console.log(product);
+//     let productContainer = document.querySelector(".products");
+//         productContainer.innerHTML = '';
+//         Object.values(product).map(item =>{
+//             console.log(product.image)
+//             productContainer.innerHTML += `
+//             <div class="product">
+//                 <button class="buy-btn" onclick="doThis(this.parentElement)">Add to Cart</button>
+//                 <img class="w-25 h-100 m-2" src="../images/product/${product.image}">
+//                 <span class="nameHere">${item.name}</span>
+            
+
+//             <div class="price">
+//                 $${item.price}
+//             </div>
+
+//             </div>
+//             `
+//         });
+// }
+
 function displayCart(product){
     console.log(product);
     let productContainer = document.querySelector(".products");
-        productContainer.innerHTML = '';
-        Object.values(product).map(item =>{
-            productContainer.innerHTML += `
+    productContainer.innerHTML = '';
+    Object.values(product).map(item =>{
+        console.log(item.image) // Correct reference to image property
+        productContainer.innerHTML += `
             <div class="product">
                 <button class="buy-btn" onclick="doThis(this.parentElement)">Add to Cart</button>
-                <img class="w-25 h-100 m-2" src="images/rt/${item.tag}.jpg">
+                <img class="w-25 h-100 m-2" src="../images/product/${item.image}.jpg">
                 <span class="nameHere">${item.name}</span>
-            
-
-            <div class="price">
-                $${item.price}
+                <div class="price">
+                   <b> $${item.price} </b>
+                </div>
             </div>
-
-            </div>
-            `
-        });
+        `;
+    });
 }
+
 
 function doThis(product){
     console.log(filteredList);
@@ -250,13 +87,14 @@ function doThis(product){
                 }
             }
         }
-    }        
-    // for(let i=0; i < newList.length; i++){
-    //     newList[i].addEventListener('click', ()=>{
-    //         cartNumbers(newList[i]);
-    //         totalCost(newList[i]);
-    //     })
-    // };
+    } 
+    
+    $('#itemAddedModal').modal('show');
+
+    // Hide the modal after 2-3 seconds
+    setTimeout(function() {
+        $('#itemAddedModal').modal('hide');
+    }, 2500); // 2500 milliseconds = 2.5 seconds       
     
 }
 
@@ -290,8 +128,6 @@ function cartNumbers(product){
 function setItems(product){
     let cartItems = localStorage.getItem('productsInCart');
     cartItems = JSON.parse(cartItems);
-    //console.log(product);
-    //console.log(product.tag);
 
     if(cartItems != null){
 

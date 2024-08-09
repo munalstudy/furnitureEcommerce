@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../images/fURNITURELOGO.png" type="image/icon type">
+
     <title>About Us - RuAin Furniture</title>
 
     <link rel="stylesheet" href="../css/bootstrap.min-4.3.1.css"/>
@@ -26,18 +28,24 @@
 
         .about-header {
             margin-top: 100px;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+            background-color: #282A35;
             color: #fff;
             padding: 100px 0;
             text-align: center;
         }
-
+        
         .about-header h1 {
             font-family: 'Pacifico', cursive;
             font-size: 4rem;
-            color: #ff6f61;
+            text-decoration: none;
+            transition: text-decoration-color 0.3s;
         }
-
+        
+        .about-header h1:hover {
+            text-decoration: underline;
+            text-decoration-color: #FF7F50;
+            text-underline-offset: 10px; /* Adjust the value to create the desired gap */
+        }
         .about-section,
         .mission-section,
         .vision-section,
@@ -55,7 +63,7 @@
         .about-content h2 {
             font-size: 2.5rem;
             margin-bottom: 20px;
-            color: #ff6f61;
+            
         }
 
         .about-content p {
@@ -79,7 +87,7 @@
 
         .section-title h2 {
             font-size: 3rem;
-            color: #FF7F50;
+           color: #282A35;
         }
 
         .team-section {
@@ -106,25 +114,8 @@
         }
 
         .team-member p {
-            color: #6c757d;
+            color: #282A35;
             font-size: 1rem;
-        }
-
-        .footer-one img {
-            max-width: 60%;
-        }
-
-        .footer-one p {
-            font-size: 0.9rem;
-        }
-
-        .footer-one h5 {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-        }
-
-        .footer-one ul li {
-            margin-bottom: 0.5rem;
         }
 
     </style>
@@ -144,7 +135,7 @@
     <div class="container about-section">
         <div class="row">
             <div class="col-md-6 about-content">
-                <h2 class="colorOrgange">Our Story</h2>
+                <h2 class="darkblue">Our Story</h2>
                 <p>Founded in the heart of the city, RuAin Furniture has grown from a humble boutique into a recognized fashion brand. We pride ourselves on bringing the latest trends and highest quality apparel to our customers. Our journey started with a simple idea: to create a space where fashion meets passion.</p>
                 <p>Our <span class="highlight-text">dedicated team</span> works tirelessly to curate collections that reflect the modern, dynamic, and diverse spirit of our clientele. We believe in the power of fashion as a means of self-expression and strive to offer pieces that cater to every unique style.</p>
             </div>
@@ -157,7 +148,7 @@
     <!-- Mission Section -->
     <div class="container mission-section">
         <div class="section-title">
-            <h2 class="colorOrgange">Our Mission</h2>
+            <h2 class="darkblue">Our Mission</h2>
         </div>
         <p>To inspire and empower individuals through fashion, offering clothing that embodies creativity, quality, and style. We aim to provide an exceptional shopping experience, from the moment you enter our store to the moment you receive your purchase.</p>
     </div>
@@ -165,7 +156,7 @@
     <!-- Vision Section -->
     <div class="container vision-section">
         <div class="section-title">
-            <h2 class="colorOrgange">Our Vision</h2>
+            <h2 class="darkblue">Our Vision</h2>
         </div>
         <p>To become a global fashion leader known for innovation and inclusivity, creating a brand that resonates with people from all walks of life. We envision a future where everyone can express themselves freely and confidently through their wardrobe.</p>
     </div>
@@ -173,7 +164,7 @@
     <!-- Team Section -->
     <div class="container team-section">
         <div class="section-title">
-            <h2 class="colorOrgange">Meet Our Team</h2>
+            <h2 class="darkblue">Meet Our Team</h2>
         </div>
         <div class="row">
             <div class="col-md-3 team-member">

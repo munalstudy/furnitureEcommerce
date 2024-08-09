@@ -398,10 +398,6 @@ function generateInvoice() {
     doc.save('invoice.pdf');
 }
 
-// Call generateInvoice function when needed, for example, on checkout button click
-document.querySelector('.btn-blue').addEventListener('click', generateInvoice);
-
-
 function validatePaymentInfo() {
     // Get the payment information from the form
     let cardName = document.getElementById('cname').value.trim();
@@ -442,12 +438,13 @@ function validatePaymentInfo() {
 function successfulCheckout() {
     if (validatePaymentInfo()) {
         // Proceed with checkout if payment info is valid
+        generateInvoice();
+
         localStorage.clear();
         window.localStorage.clear();
         alert('Thank you for buying with RuAin Furniture!');
         var users = JSON.parse(localStorage.getItem('users')) || [];
-        generateInvoice(users.name, document.getElementById('checkout_Email').value);
-        // window.location.href='index.html';
+        window.location.href='../index.html';
     }
 }
 

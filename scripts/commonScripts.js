@@ -135,5 +135,7 @@ function onLoadCartNumbers() {
 
 window.onload = function () {
     jQuery('body .buy-btn').click(function(){jQuery('.toast').toast('show');});
+    
 }
+
 
